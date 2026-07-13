@@ -1,0 +1,26 @@
+package com.dishan;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
+
+public class MyServiceTest {
+
+    @Test
+    public void shouldReturnMockedApiResponse() {
+
+        // Arrange
+        ExternalApi mockApi = mock(ExternalApi.class);
+
+        when(mockApi.getData()).thenReturn("Mock Data");
+
+        MyService myService = new MyService(mockApi);
+
+        // Act
+        String result = myService.fetchData();
+
+        // Assert
+        assertEquals("Mock Data", result);
+    }
+}
